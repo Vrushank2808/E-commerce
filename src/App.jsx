@@ -1,19 +1,21 @@
-import React from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Home from './components/home/Home'
-import Header from './components/Header'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Header from "./components/Header";
+import AuthPage from "./Auth/AuthPage";
+import { AuthProvider } from "./Auth/AuthContext";
+import Home from "./components/home/Home";
 
 function App() {
   return (
-    <>
-      <BrowserRouter>
+    <AuthProvider>
+      <Router>
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/auth" element={<AuthPage />} />
         </Routes>
-      </BrowserRouter> 
-    </>
-  )
+      </Router>
+    </AuthProvider>
+  );
 }
 
-export default App
+export default App;
